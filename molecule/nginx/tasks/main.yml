@@ -1,0 +1,27 @@
+---
+# tasks file for nginx
+  - name: add epel-release repo
+    yum:
+      name: epel-release
+      state: present
+
+  - name: install nginx
+    yum: name=nginx state=present
+
+  - name: create devops directory
+    file:
+      path: /tmp/devops_directory
+      state: directory
+
+  - name: copy start page
+    copy:
+      src: ../files/index.html
+      dest: /usr/share/nginx/html/index.html
+
+  - name: copy config page
+    copy:
+      src: ../files/nginx.conf
+      dest: /etc/nginx/nginx.conf
+      owner: root
+      group: root
+      mode: '0644'

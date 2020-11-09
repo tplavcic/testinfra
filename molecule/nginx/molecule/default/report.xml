@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="4" time="7.619" timestamp="2020-11-09T18:39:31.832009" hostname="bender"><testcase classname="tests.test_default" name="test_hosts_file[ansible://nginx-test-container]" time="2.020" /><testcase classname="tests.test_default" name="test_custom_directory[ansible://nginx-test-container]" time="1.325"><failure message="assert False&#10; +  where False = &lt;file /var/lib/user&gt;.exists">host = &lt;testinfra.host.Host ansible://nginx-test-container&gt;
+
+    def test_custom_directory(host):
+        """Validate /etc/hosts file."""
+        f = host.file("/var/lib/user")
+&gt;       assert f.exists
+E       assert False
+E        +  where False = &lt;file /var/lib/user&gt;.exists
+
+tests/test_default.py:14: AssertionError</failure></testcase><testcase classname="tests.test_default" name="test_nginx_is_installed[ansible://nginx-test-container]" time="1.522" /><testcase classname="tests.test_default" name="test_nginx_running_and_enabled[ansible://nginx-test-container]" time="1.537"><failure message="assert False&#10; +  where False = &lt;service nginx&gt;.is_running">host = &lt;testinfra.host.Host ansible://nginx-test-container&gt;
+
+    def test_nginx_running_and_enabled(host):
+        nginx = host.service("nginx")
+&gt;       assert nginx.is_running
+E       assert False
+E        +  where False = &lt;service nginx&gt;.is_running
+
+tests/test_default.py:29: AssertionError</failure></testcase></testsuite></testsuites>
